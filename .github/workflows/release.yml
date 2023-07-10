@@ -23,6 +23,8 @@ jobs:
 
       - run: go version
 
+      - run: ls -alhR
+
       - name: Run release script
         run: ./.github/scripts/release.sh
         env:

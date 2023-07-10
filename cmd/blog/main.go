@@ -52,6 +52,7 @@ func main() {
 		ServeHTMLFolder:       filepath.Join(config.HOME, "web"),
 		HTMLFolderDomainNames: []string{"arthurweinmann.com", "www.arthurweinmann.com"},
 		RedirectHTTP2HTTPS:    true,
+		OnlyHTTPS:             true,
 		PerDomain:             map[string]func(r *router.Router, spath []string, w http.ResponseWriter, req *http.Request){},
 	})
 	if err != nil {

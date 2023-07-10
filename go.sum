@@ -64,6 +64,8 @@ github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da/go.mod h1:Q73ZrmV
 github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310/go.mod h1:ufUuZ+zHj4x4TnLV4JWEpy2hxWSpsRywHrMgIH9cCH8=
 github.com/arthurweinmann/go-https-hug v0.0.0-20230710203709-652256597a1a h1:mQpkN7dCw7eIPmXkhdeZ4dj7AjgvMlpCgS1/xrYCcGY=
 github.com/arthurweinmann/go-https-hug v0.0.0-20230710203709-652256597a1a/go.mod h1:enZk1ccjutK2EaN2nJmOy3HdOXS4YlUS1RKtNmkzKDE=
+github.com/arthurweinmann/go-https-hug v0.0.0-20230710212353-cc4e9dbf08c1 h1:QQR54iLO9yXizUeQOp4iOaK8NWoqzVWkHNrpsC18ge4=
+github.com/arthurweinmann/go-https-hug v0.0.0-20230710212353-cc4e9dbf08c1/go.mod h1:enZk1ccjutK2EaN2nJmOy3HdOXS4YlUS1RKtNmkzKDE=
 github.com/aws/aws-sdk-go v1.44.114 h1:plIkWc/RsHr3DXBj4MEw9sEW4CcL/e2ryokc+CKyq1I=
 github.com/aws/aws-sdk-go v1.44.114/go.mod h1:y4AeaBuwd2Lk+GepC1E9v0qOiTws0MIWAX4oIKwKHZo=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=

@@ -112,7 +112,7 @@ func main() {
 		panic(err)
 	}
 
-	f, err := os.Create(filepath.Join(wd, "build/web/articles/index.html"))
+	f, err := os.Create(filepath.Join(wd, "build/web/index.html"))
 	if err != nil {
 		panic(err)
 	}

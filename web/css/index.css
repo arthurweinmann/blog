@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "ComicMono";
+    src: url(/assets/fonts/ComicMono.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "ComicMono-Bold";
+    src: url(/assets/fonts/ComicMono-Bold.ttf) format("truetype");
+}
+
+html, body {
+    width: 100%;
+}
+
+.articles_list {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.articles_list a {
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 30px;
+    font-size: 18px;
+    font-family: "ComicMono-Bold";
+    font-weight: bold;
+}
+
+.article_wrapper {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.article_body {
+    display: inline-block;
+    width: 100%;
+    max-width: 750px;
+    font-family: "ComicMono-Bold";
+}

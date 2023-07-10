@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        Arthur Weinmann - Blog
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+
+</head>
+
+<body>
+    <div class="articles_list">
+        {{range .Articles}}
+            <a class="article_link" href="{{.Link}}">{{.Title}}</a>
+        {{end}}
+    </div>
+</body>
+
+</html>

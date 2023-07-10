@@ -8,7 +8,8 @@
     src: url(/assets/fonts/ComicMono-Bold.ttf) format("truetype");
 }
 
-html, body {
+html,
+body {
     width: 100%;
 }
 
@@ -31,14 +32,41 @@ html, body {
     display: inline-block;
     width: 100%;
     text-align: center;
-    padding-top: 50px;
-    padding-left: 25px;
-    padding-right: 25px;
 }
 
 .article_body {
     display: inline-block;
     width: 100%;
-    max-width: 750px;
+    max-width: 1000px;
+    font-family: "ComicMono";
+    padding-bottom: 150px;
+}
+
+.article_body h1 {
     font-family: "ComicMono-Bold";
+    font-weight: bold;
+    font-size: 35px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.article_body p {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 30px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.banner_img {
+    display: inline-block;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.banner_img img {
+    max-width: 100%;
 }

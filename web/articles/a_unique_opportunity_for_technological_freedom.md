@@ -1,8 +1,8 @@
-# A unique opportunity for technological freedom
-
 <div class="banner_img">
     <img src="/assets/images/banner_technological_freedom.png" />
 </div>
+
+# A unique opportunity for technological freedom
 
 In a world increasingly dominated by technological advancements and locked-in systems, the right to universal access to a personal, Jarvis-like engineering companion could prove transformative. This AI-powered personal assistant, modeled after the iconic Jarvis from the Marvel universe, should be able to help anyone not only to interact with, but also to understand and manipulate technology freely.
 

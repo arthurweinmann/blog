@@ -37,34 +37,37 @@ body {
 .article_body {
     display: inline-block;
     width: 100%;
-    max-width: 1000px;
+    max-width: 720px;
     font-family: "ComicMono";
-    padding-bottom: 150px;
+    padding-bottom: 120px;
+    min-height: 100vh;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 120px;
+    margin: 0px auto;
+    box-sizing: border-box;
 }
 
 .article_body h1 {
     font-family: "ComicMono-Bold";
     font-weight: bold;
-    font-size: 35px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
+    font-size: 16px;
+    padding-bottom: 32px;
+    line-height: 20px;
+    text-align: left;
 }
 
 .article_body p {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-top: 30px;
+    margin-bottom: 12px;
     text-align: left;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 28px;
 }
 
 .banner_img {
     display: inline-block;
     width: 100%;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .banner_img img {

@@ -54,13 +54,13 @@ body {
 .retour_link {
     position: absolute;
     top: 120px;
-    left: -30px;
+    left: -90px;
 }
 
-@media (min-width: 900px) {
+@media (max-width: 900px) {
     .retour_link {
-        left: 0px;
-        top: 100px;
+        left: 20px;
+        top: 70px;
     }
 }
 
@@ -68,6 +68,8 @@ body {
     display: inline-block;
     text-decoration: none;
     font-family: "ComicMono";
+
+    color: #1a1a1a;
 }
 
 .article_body h1 {

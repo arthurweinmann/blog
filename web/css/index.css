@@ -17,6 +17,9 @@ body {
     display: inline-block;
     width: 100%;
     text-align: center;
+    padding-top: 120px;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 
 .articles_list a {
@@ -26,6 +29,7 @@ body {
     font-size: 18px;
     font-family: Open Sans, Roboto, sans-serif;
     font-weight: bold;
+    word-wrap: break-word;
 }
 
 .article_wrapper {

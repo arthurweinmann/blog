@@ -15,7 +15,6 @@ body {
 
 .articles_list {
     display: inline-block;
-    width: 100%;
     text-align: center;
     padding-top: 120px;
     padding-left: 24px;
@@ -30,6 +29,7 @@ body {
     font-family: Open Sans, Roboto, sans-serif;
     font-weight: bold;
     word-wrap: break-word;
+    word-break: break-word;
 }
 
 .article_wrapper {

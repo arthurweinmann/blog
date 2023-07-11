@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: "ComicMono";
     src: url(/assets/fonts/ComicMono.ttf) format("truetype");
 }
@@ -6,7 +6,7 @@
 @font-face {
     font-family: "ComicMono-Bold";
     src: url(/assets/fonts/ComicMono-Bold.ttf) format("truetype");
-}
+} */
 
 html,
 body {
@@ -24,7 +24,7 @@ body {
     text-decoration: none;
     margin-top: 30px;
     font-size: 18px;
-    font-family: "ComicMono-Bold";
+    font-family: Open Sans, Roboto, sans-serif;
     font-weight: bold;
 }
 
@@ -41,7 +41,7 @@ body {
     display: inline-block;
     width: 100%;
     max-width: 720px;
-    font-family: "ComicMono";
+    font-family: Open Sans, Roboto, sans-serif;
     padding-bottom: 120px;
     min-height: 100vh;
     padding-left: 24px;
@@ -67,25 +67,28 @@ body {
 .retour_link a {
     display: inline-block;
     text-decoration: none;
-    font-family: "ComicMono";
+    font-family: Open Sans, Roboto, sans-serif;
 
     color: #1a1a1a;
 }
 
 .article_body h1 {
-    font-family: "ComicMono-Bold";
+    font-family: Open Sans, Roboto, sans-serif;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 2em;
     padding-bottom: 32px;
-    line-height: 20px;
+    line-height: 1.2;
     text-align: left;
+    word-wrap: break-word;
 }
 
 .article_body p {
-    margin-bottom: 12px;
     text-align: left;
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 1.125em;
+    line-height: 1.5;
+    word-wrap: break-word;
+    margin: 0 0 1.5em;
+    font-family: Open Sans, Roboto, sans-serif;
 }
 
 .banner_img {

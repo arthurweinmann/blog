@@ -32,9 +32,12 @@ body {
     display: inline-block;
     width: 100%;
     text-align: center;
+    background-color: #fcfcfc;
+    color: #1a1a1a;
 }
 
 .article_body {
+    position: relative;
     display: inline-block;
     width: 100%;
     max-width: 720px;
@@ -46,6 +49,25 @@ body {
     padding-top: 120px;
     margin: 0px auto;
     box-sizing: border-box;
+}
+
+.retour_link {
+    position: absolute;
+    top: 120px;
+    left: -30px;
+}
+
+@media (min-width: 900px) {
+    .retour_link {
+        left: 0px;
+        top: 100px;
+    }
+}
+
+.retour_link a {
+    display: inline-block;
+    text-decoration: none;
+    font-family: "ComicMono";
 }
 
 .article_body h1 {

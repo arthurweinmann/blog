@@ -57,6 +57,15 @@ body {
     box-sizing: border-box;
 }
 
+.article_date {
+    display: inline-block;
+    width: 100%;
+    font-family: Open Sans, Roboto, sans-serif;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
 .retour_link {
     position: absolute;
     top: 120px;
@@ -105,4 +114,18 @@ body {
 
 .banner_img img {
     max-width: 100%;
+}
+
+.center_img {
+    display: inline-block;
+    width: 100%;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    height: 250px;
+}
+
+.center_img {
+    display: inline-block;
+    max-height: 100%;
 }

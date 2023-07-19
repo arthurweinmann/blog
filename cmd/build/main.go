@@ -5,9 +5,12 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"sort"
 	"strings"
 	"text/template"
+	"time"
 
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/html"
@@ -15,9 +18,11 @@ import (
 )
 
 type Article struct {
-	Title   string `json:"Title"`
-	Link    string `json:"Link"`
-	Content string `json:"Content"`
+	Title          string    `json:"Title"`
+	Link           string    `json:"Link"`
+	Content        string    `json:"Content"`
+	LastEdit       time.Time `json:"LastEdit"`
+	LastEditPretty string    `json:"LastEditPretty"`
 }
 
 func main() {
@@ -54,7 +59,15 @@ func main() {
 		}
 
 		if !info.IsDir() {
-			art := &Article{}
+			lastEdit, err := getLastGitModificationTime(path)
+			if err != nil {
+				return err
+			}
+
+			art := &Article{
+				LastEdit:       lastEdit,
+				LastEditPretty: PrettyDate(lastEdit),
+			}
 
 			fname := strings.Replace(filepath.Base(path), filepath.Ext(filepath.Base(path)), "", -1)
 
@@ -101,6 +114,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	sort.Slice(articles, func(i, j int) bool {
+		return articles[i].(*Article).LastEdit.After(articles[j].(*Article).LastEdit)
+	})
 
 	b, err = os.ReadFile(filepath.Join(wd, "web/index.html"))
 	if err != nil {
@@ -152,4 +169,27 @@ func mdToHTML(md []byte) []byte {
 	renderer := html.NewRenderer(opts)
 
 	return markdown.Render(doc, renderer)
+}
+
+func getLastGitModificationTime(filePath string) (time.Time, error) {
+	cmd := exec.Command("git", "log", "-1", "--pretty=format:%cI", filePath)
+	output, err := cmd.Output()
+	if err != nil {
+		return time.Time{}, fmt.Errorf("failed to execute command: %v", err)
+	}
+
+	// Remove leading and trailing white space
+	outputStr := strings.TrimSpace(string(output))
+
+	// Parse the time in RFC3339 format
+	modTime, err := time.Parse(time.RFC3339, outputStr)
+	if err != nil {
+		return time.Time{}, fmt.Errorf("failed to parse time: %v", err)
+	}
+
+	return modTime, nil
+}
+
+func PrettyDate(t time.Time) string {
+	return t.Format("Monday, 02-January-2006, 03:04 PM")
 }

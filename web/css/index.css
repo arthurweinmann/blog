@@ -32,6 +32,7 @@ body {
     font-weight: bold;
     word-wrap: break-word;
     word-break: break-word;
+    width: 100%;
 }
 
 .article_wrapper {
@@ -119,23 +120,37 @@ body {
 .center_img {
     display: inline-block;
     width: 100%;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 1.5em;
     text-align: center;
     height: 250px;
 }
 
-.center_img {
+.center_img img {
     display: inline-block;
     max-height: 100%;
 }
 
 pre {
     overflow-x: auto;
+    text-align: left;
+    margin-bottom: 1.5em;
+}
+
+.collapsiblepre {
+    overflow: visible;
 }
 
 code {
     font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+li {
+    text-align: left;
+    margin-bottom: 1em;
 }
 
 .wrap-collabsible input[type='checkbox'] {
@@ -184,10 +199,11 @@ code {
     max-height: 0px;
     overflow: hidden;
     transition: max-height .25s ease-in-out;
+    overflow: auto;
 }
 
 .toggle:checked+.lbl-toggle+.collapsible-content {
-    max-height: 350px;
+    max-height: 650px;
 }
 
 .toggle:checked+.lbl-toggle {

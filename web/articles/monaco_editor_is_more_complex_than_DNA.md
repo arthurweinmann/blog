@@ -29,7 +29,7 @@ For context, complexity is typically defined as:
 
 In the realm of computer science, the definition expands to characterize something with many parts where those parts interact with each other in multiple ways, culminating in a higher order of emergence greater than the sum of its parts. The intuitive criterion of complexity can be formulated as follows: a system would be more complex if more parts could be distinguished, and if more connections between them existed.
 
-The Monaco Editor also maintains a substantial file: ./src/language/typescript/lib/typescriptServices.js, dedicated to TypeScript, which is incorporated via the npm run import-typescript command. TypeScript operates as a standalone system, necessitating individualized maintenance and support, thus contributing to the overall complexity.
+The Monaco Editor also maintains a substantial file: ./src/language/typescript/lib/typescriptServices.js, dedicated to TypeScript, which is incorporated via the `npm run import-typescript` command. TypeScript operates as a standalone system, necessitating individualized maintenance and support, thus contributing to the overall complexity.
 
 This leads to the intriguing question: Is it feasible to reproduce TypeScript's capabilities purely in vanilla JavaScript, thereby eliminating the need for a separate framework and the associated maintenance overhead? Such a solution could potentially alleviate some of the aforementioned complexity.
 
@@ -37,7 +37,7 @@ This leads to the intriguing question: Is it feasible to reproduce TypeScript's 
   <input id="collapsible" class="toggle" type="checkbox"> 
   <label for="collapsible" class="lbl-toggle">The split of the code lines</label>
   <div class="collapsible-content">
-  <pre><code class="language-bash">
+  <pre class="collapsiblepre"><code class="language-bash">
 919138 total
    514194 ./.git/objects/pack/pack-dfab111b0b254443247c3abac391016aba75078f.pack
    169809 ./src/language/typescript/lib/typescriptServices.js

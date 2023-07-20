@@ -25,6 +25,8 @@ jobs:
 
       - run: go version
 
+      - run: apt-get update -y && apt-get upgrade -y
+
       - run: git log -1 --pretty=format:%cI web/articles/a_unique_opportunity_for_technological_freedom.md
 
       - name: Run release script

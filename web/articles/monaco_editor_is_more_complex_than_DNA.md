@@ -38,8 +38,8 @@ This leads to the intriguing question: Is it feasible to reproduce TypeScript's 
 Additional elements contributing to the (unnecessary ?) complexity and steepening the learning curve of the editor includes Webpack, Vite, and Parcel. Taking Webpack as an example, it takes quite a few hours to understand how it works and then some more hours to understand how to make it work as you need it to. Are those intricacies integral to the system design or superfluous complexities ?
 
 <div class="wrap-collabsible">
-  <input id="collapsible" class="toggle" type="checkbox"> 
-  <label for="collapsible" class="lbl-toggle">The full segmentation of the code lines</label>
+  <input id="collapsible1" class="toggle" type="checkbox"> 
+  <label for="collapsible1" class="lbl-toggle">The full segmentation of the code lines</label>
   <div class="collapsible-content">
   <pre class="collapsiblepre"><code class="language-bash">
 919138 total
@@ -820,8 +820,8 @@ Additional elements contributing to the (unnecessary ?) complexity and steepenin
 After compilation, the total footprint amounts to 1.5GB, a significant portion of which can be attributed to Node.js dependent modules and the website playground. It's noteworthy to mention that dependencies play a substantial role in contributing to complexities, especially in an ecosystem as dynamic as npm. There exist potential complications when a module ceases to be maintained, or when a module's API is updated or a security upgrade becomes necessary, and so on.
 
 <div class="wrap-collabsible">
-  <input id="collapsible" class="toggle" type="checkbox"> 
-  <label for="collapsible" class="lbl-toggle">The sizes of files of a compiled Monaco Editor</label>
+  <input id="collapsible2" class="toggle" type="checkbox"> 
+  <label for="collapsible2" class="lbl-toggle">The sizes of files of a compiled Monaco Editor</label>
   <div class="collapsible-content">
   <pre class="collapsiblepre"><code class="language-bash">
   8.0K	./webpack-plugin/src/loaders

@@ -204,7 +204,7 @@ li {
 }
 
 .toggle:checked+.lbl-toggle+.collapsible-content {
-    max-height: 650px;
+    max-height: 550px;
 }
 
 .toggle:checked+.lbl-toggle {

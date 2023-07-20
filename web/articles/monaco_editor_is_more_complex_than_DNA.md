@@ -18,7 +18,7 @@ As of July 19, 2023, and at merge commit 0f95ee0d84b8425100bb4953c231e837402f400
 
 - 123302 lines of Typescrit (notably, TypeScript requires a dedicated compiler, which inherently introduces additional layers of complexity).
 - 175849 lines of JavaScript
-- 36205 lines of JSON, lines of JSON configuration, used predominantly for dependency management and versioning.
+- 36205 lines of JSON, used predominantly for dependency management and versioning.
 
 This sums up to an impressive 918,477 total lines of code, of which 514,194 are located within the .git repository. Though versioning mechanisms, such as Git, indeed introduce additional elements into the system, they can arguably reduce overall complexity by facilitating code comprehension and management for developers.
 

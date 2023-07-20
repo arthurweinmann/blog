@@ -8,39 +8,36 @@ When I first compiled the Monaco Editor, the sum of all files amounted to around
     <img src="/assets/images/dna_complexity.png" />
 </div>
 
-This excellent article for a more in depth : https://berthub.eu/articles/posts/amazing-dna/
-
-Instead of re-engineering the entire thing, I have endeavored to box this complexity into a single JavaScript file that can be utilized with vanilla JavaScript, without the need to understand and research ways to do it, which, to be fair, exist.
-
-compter nombre ts js json css lines
-
-we can count the number of lines per type of file in a repository with
+The following script allows us to quantify the lines of code per file type in a repository:
 
 ```bash
 find . -name '*.ts' | xargs wc -l
 ```
 
-as of date + commit
+As of July 19, 2023, and at merge commit 0f95ee0d84b8425100bb4953c231e837402f400b, the Monaco Editor's codebase, excluding dependencies, comprises:
 
-123302 lines of typescrit (which itself needs a compiler and is not vanilla javascript, which introduces collateral complexity)
-175849 lines of javascript
-36205 lines of json configuration and dependency versioning and management.
+- 123302 lines of Typescrit (notably, TypeScript requires a dedicated compiler, which inherently introduces additional layers of complexity).
+- 175849 lines of JavaScript
+- 36205 lines of JSON, lines of JSON configuration, used predominantly for dependency management and versioning.
 
-918477 total lines, with to be fair, 514194 contained in the history .git repository. Versioning is great and maybe even gives some negativ complexity to a repository since it enables developer to probably understand the codebase more easily. Nevertheless, it is still some more moving parts and the definition of complexity is:
+This sums up to an impressive 918,477 total lines of code, of which 514,194 are located within the .git repository. Though versioning mechanisms, such as Git, indeed introduce additional elements into the system, they can arguably reduce overall complexity by facilitating code comprehension and management for developers.
 
-- the state or quality of being intricate or complicated.
-- intricate: very complicated or detailed. e.g. "an intricate network of canals"
+For context, complexity is typically defined as:
 
-- Wikipedia: Complexity characterises the behaviour of a system or model whose components interact in multiple ways and follow local rules, leading to nonlinearity, randomness, collective dynamics, hierarchy, and emergence (I wonder what would happen if our code editors became conscious suddenly). ***The term is generally used to characterize something with many parts where those parts interact with each other in multiple ways, culminating in a higher order of emergence greater than the sum of its parts. The intuitive criterion of complexity can be formulated as follows: a system would be more complex if more parts could be distinguished, and if more connections between them existed.***
+- The state or characteristic of having intricate or complicated components.
+- The quality of being extremely detailed or complex, as exemplified by a highly interconnected system.
 
+In the realm of computer science, the definition expands to characterize something with many parts where those parts interact with each other in multiple ways, culminating in a higher order of emergence greater than the sum of its parts. The intuitive criterion of complexity can be formulated as follows: a system would be more complex if more parts could be distinguished, and if more connections between them existed.
 
-<details>
-  <summary>
-    <h2>
-      the split of the code lines:
-    </h2>
-  </summary>
-  ```bash
+The Monaco Editor also maintains a substantial file: ./src/language/typescript/lib/typescriptServices.js, dedicated to TypeScript, which is incorporated via the npm run import-typescript command. TypeScript operates as a standalone system, necessitating individualized maintenance and support, thus contributing to the overall complexity.
+
+This leads to the intriguing question: Is it feasible to reproduce TypeScript's capabilities purely in vanilla JavaScript, thereby eliminating the need for a separate framework and the associated maintenance overhead? Such a solution could potentially alleviate some of the aforementioned complexity.
+
+<div class="wrap-collabsible">
+  <input id="collapsible" class="toggle" type="checkbox"> 
+  <label for="collapsible" class="lbl-toggle">The split of the code lines</label>
+  <div class="collapsible-content">
+  <pre><code class="language-bash">
 919138 total
    514194 ./.git/objects/pack/pack-dfab111b0b254443247c3abac391016aba75078f.pack
    169809 ./src/language/typescript/lib/typescriptServices.js
@@ -812,22 +809,88 @@ as of date + commit
         1 ./.git/description
         1 ./.gitattributes
 ```
-</details>
+</code></pre>
+</div>
+</div>
 
 # Boxing this complexity away of the eye and mind
 
-The more complexity a programmer mind has to keep in touch with, the harder and longer it is to actually program with it. 
+The cognitive load associated with managing a high degree of complexity can adversely affect a programmer's ability to code efficiently and effectively.
 
-Talk of the different tries, embuche, wrong ways etc
+In an attempt to mitigate this, I have focused on encapsulating Monaco Editor's complexity within a singular JavaScript file. My goal was to circumvent the need for the nodejs + npm + typescript + webpack build system and the learning curve it implies.
 
-TODO: still a lot to figure out but it works well enough for now
+I have made my fork available at https://github.com/arthurweinmann/boxed-monaco-editor. This is a work-in-progress solution, tailored specifically to my needs.
 
-```go
-func getTrue() bool {
-    return true
-}
+My initial approach was to encapsulate everything into a single file, but this proved difficult. Instead, I settled on a functional encapsulation, which comprises a collection of files that the browser can asynchronously load as required. For instance, the language-specific web workers. This encapsulation is implemented in the 'boxed' folder.
+
+One noteworthy technique involves the method of directing the Monaco Editor to the required JavaScript files when these are not located at the root of your website. I achieved this by assigning an ID to the import script:
+
+```html
+<script id="boxedMonacoScript" src="/js/lib/app.boxedmonaco.js"></script>
+```
+
+This ID is then used in the webpack entry file to deduce the path of the folder containing the boxed Monaco files:
+
+```javascript
+import * as monaco from 'monaco-editor';
+// or import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+// if shipping only a subset of the features & languages is desired
+
+self.MonacoEnvironment = {
+	getWorkerUrl: function (moduleId, label) {
+		let script = document.getElementById("boxedMonacoScript");
+		if (script !== undefined) {
+			let src = script.getAttribute('src');
+			let spl = src.split("/");
+			spl.pop();
+			if (spl !== undefined) {
+				src = spl.join("/");
+
+				if (src.endsWith('/')) {
+					src = src.slice(0, -1);
+				}
+
+				if (label === 'json') {
+					return src + '/json.worker.boxedmonaco.js';
+				}
+				if (label === 'css' || label === 'scss' || label === 'less') {
+					return src + '/css.worker.boxedmonaco.js';
+				}
+				if (label === 'html' || label === 'handlebars' || label === 'razor') {
+					return src + '/html.worker.boxedmonaco.js';
+				}
+				if (label === 'typescript' || label === 'javascript') {
+					return src + '/ts.worker.boxedmonaco.js';
+				}
+				return src + '/editor.worker.boxedmonaco.js';
+			}
+		}
+
+		if (label === 'json') {
+			return './json.worker.boxedmonaco.js';
+		}
+		if (label === 'css' || label === 'scss' || label === 'less') {
+			return './css.worker.boxedmonaco.js';
+		}
+		if (label === 'html' || label === 'handlebars' || label === 'razor') {
+			return './html.worker.boxedmonaco.js';
+		}
+		if (label === 'typescript' || label === 'javascript') {
+			return './ts.worker.boxedmonaco.js';
+		}
+		return './editor.worker.boxedmonaco.js';
+	}
+};
+
+window.boxedMonaco = monaco;
 ```
 
 # Conclusion
 
-I believe we introduce more complexity than we need to in our digital systems. Software engineering is both about implementing systems and about working on decreasing their complexity to the strict minimun needed to achieve the desired functionnality and behavior.
+The prototype of the boxed Monaco Editor is presently in a rudimentary state, yet it adequately fulfills my individual needs at this time.
+
+I believe that our digital systems often possess a level of complexity that surpasses necessity. Software engineering should not merely concern itself with system implementation, but also with the crucial task of minimizing complexity, paring it down to the bare essentials required to accomplish the intended functionality and behavior. 
+
+I feel like, occasionally, what we perceive as simplifications or practical choices may give us the impression of reducing complexity, when in fact we moved it elsewhere, allowing it to grow and grow outside of our immediate awareness.
+
+For a deeper overview of how DNA relates to computing, consider reading this great work: https://berthub.eu/articles/posts/amazing-dna/.

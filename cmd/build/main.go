@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/fs"
 	"os"
 	"os/exec"
@@ -12,12 +14,42 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/alecthomas/chroma"
+	"github.com/alecthomas/chroma/formatters/html"
+	"github.com/alecthomas/chroma/lexers"
+	"github.com/alecthomas/chroma/styles"
 	"github.com/gomarkdown/markdown"
-	"github.com/gomarkdown/markdown/html"
+	"github.com/gomarkdown/markdown/ast"
+	mdhtml "github.com/gomarkdown/markdown/html"
 	"github.com/gomarkdown/markdown/parser"
 )
 
+var (
+	htmlFormatter  *html.Formatter
+	highlightStyle *chroma.Style
+	highlightCSS   string
+)
+
+func init() {
+	htmlFormatter = html.New(html.WithClasses(true), html.TabWidth(2))
+	if htmlFormatter == nil {
+		panic("couldn't create html formatter")
+	}
+	styleName := "monokailight"
+	highlightStyle = styles.Get(styleName)
+	if highlightStyle == nil {
+		panic(fmt.Sprintf("didn't find style '%s'", styleName))
+	}
+	b := bytes.NewBuffer(nil)
+	err := htmlFormatter.WriteCSS(b, highlightStyle)
+	if err != nil {
+		panic(err)
+	}
+	highlightCSS = b.String()
+}
+
 type Article struct {
+	HighlightCSS   string    `json:"HighlightCSS"`
 	Title          string    `json:"Title"`
 	Link           string    `json:"Link"`
 	Content        string    `json:"Content"`
@@ -65,6 +97,7 @@ func main() {
 			}
 
 			art := &Article{
+				HighlightCSS:   "<style>" + highlightCSS + "</style>",
 				LastEdit:       lastEdit,
 				LastEditPretty: PrettyDate(lastEdit),
 			}
@@ -164,9 +197,9 @@ func mdToHTML(md []byte) []byte {
 	doc := p.Parse(md)
 
 	// create HTML renderer with extensions
-	htmlFlags := html.CommonFlags | html.HrefTargetBlank
-	opts := html.RendererOptions{Flags: htmlFlags}
-	renderer := html.NewRenderer(opts)
+	htmlFlags := mdhtml.CommonFlags | mdhtml.HrefTargetBlank
+	opts := mdhtml.RendererOptions{Flags: htmlFlags, RenderNodeHook: myRenderHook}
+	renderer := mdhtml.NewRenderer(opts)
 
 	return markdown.Render(doc, renderer)
 }
@@ -192,4 +225,40 @@ func getLastGitModificationTime(filePath string) (time.Time, error) {
 
 func PrettyDate(t time.Time) string {
 	return t.Format("Monday, 02-January-2006, 03:04 PM")
+}
+
+// based on https://github.com/alecthomas/chroma/blob/master/quick/quick.go
+func htmlHighlight(w io.Writer, source, lang, defaultLang string) error {
+	if lang == "" {
+		lang = defaultLang
+	}
+	l := lexers.Get(lang)
+	if l == nil {
+		l = lexers.Analyse(source)
+	}
+	if l == nil {
+		l = lexers.Fallback
+	}
+	l = chroma.Coalesce(l)
+
+	it, err := l.Tokenise(nil, source)
+	if err != nil {
+		return err
+	}
+	return htmlFormatter.Format(w, highlightStyle, it)
+}
+
+// an actual rendering of Paragraph is more complicated
+func renderCode(w io.Writer, codeBlock *ast.CodeBlock, entering bool) {
+	defaultLang := ""
+	lang := string(codeBlock.Info)
+	htmlHighlight(w, string(codeBlock.Literal), lang, defaultLang)
+}
+
+func myRenderHook(w io.Writer, node ast.Node, entering bool) (ast.WalkStatus, bool) {
+	if code, ok := node.(*ast.CodeBlock); ok {
+		renderCode(w, code, entering)
+		return ast.GoToNext, true
+	}
+	return ast.GoToNext, false
 }

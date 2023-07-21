@@ -258,11 +258,36 @@ li {
     text-align: center;
 }
 
-.sponsor_card_iframe {
+.sponsor_card_iframe_computer {
+    display: none;
     position: relative;
-    display: inline-block;
     width: 100%;
     max-width: 720px;
     padding-left: 24px;
     padding-right: 24px;
+}
+
+.sponsor_card_iframe_mobile {
+    display: none;
+    position: relative;
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    color: #ee992b;
+    font-family: "ComicMono-Bold";
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 1.2;
+}
+
+@media (max-width: 750px) {
+    .sponsor_card_iframe_mobile {
+        display: inline-block;
+    }
+}
+
+@media (min-width: 750px) {
+    .sponsor_card_iframe_mobile {
+        display: inline-block;
+    }
 }

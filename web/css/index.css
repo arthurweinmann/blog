@@ -278,6 +278,13 @@ li {
     font-weight: bold;
     font-size: 1.5em;
     line-height: 1.2;
+    box-sizing: border-box;
+}
+
+.sponsor_card_iframe_mobile iframe {
+    height: 32px;
+    width: 114px;
+    max-width: 100%;
 }
 
 @media (max-width: 750px) {

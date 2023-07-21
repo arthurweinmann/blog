@@ -31,10 +31,11 @@ body {
     line-height: 1.2;
     text-align: center;
     word-wrap: break-word;
+    color: #ee992b;
 }
 
 .articles_list span {
-    text-align: left;
+    text-align: center;
     font-family: "ComicMono-Bold";
     font-size: 0.8em;
     width: 100%;
@@ -53,6 +54,7 @@ body {
     word-wrap: break-word;
     word-break: break-word;
     width: 100%;
+    color: #55360e;
 }
 
 .article_wrapper {

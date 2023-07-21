@@ -251,7 +251,16 @@ li {
     margin-bottom: 0;
 }
 
+.sponsor_card_iframe_container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
 .sponsor_card_iframe {
+    position: relative;
+    display: inline-block;
     width: 100%;
     max-width: 720px;
     padding-left: 24px;

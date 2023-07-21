@@ -250,3 +250,10 @@ li {
 .collapsible-content p {
     margin-bottom: 0;
 }
+
+.sponsor_card_iframe {
+    width: 100%;
+    max-width: 720px;
+    padding-left: 24px;
+    padding-right: 24px;
+}

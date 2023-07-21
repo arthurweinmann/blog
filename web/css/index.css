@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
     font-family: "ComicMono";
     src: url(/assets/fonts/ComicMono.ttf) format("truetype");
 }
@@ -6,7 +6,7 @@
 @font-face {
     font-family: "ComicMono-Bold";
     src: url(/assets/fonts/ComicMono-Bold.ttf) format("truetype");
-} */
+}
 
 html,
 body {
@@ -23,7 +23,7 @@ body {
     box-sizing: border-box;
 }
 
-articles_list h1 {
+.articles_list h1 {
     font-family: Open Sans, Roboto, sans-serif;
     font-weight: bold;
     font-size: 1.5em;
@@ -35,11 +35,12 @@ articles_list h1 {
 
 .articles_list span {
     text-align: left;
-    font-family: Open Sans, Roboto, sans-serif;
-    font-size: 1em;
+    font-family: "ComicMono-Bold";
+    font-size: 0.8em;
     width: 100%;
     display: inline-block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .articles_list a {

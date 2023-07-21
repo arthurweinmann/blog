@@ -16,7 +16,9 @@
 
 <body>
     <div class="articles_list">
+        <h1>Posts</h1>
         {{range .Articles}}
+            <span>{{.LastEditPretty}}</span>
             <a class="article_link" href="{{.Link}}">{{.Title}}</a>
         {{end}}
     </div>

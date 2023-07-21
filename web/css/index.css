@@ -23,11 +23,30 @@ body {
     box-sizing: border-box;
 }
 
+articles_list h1 {
+    font-family: Open Sans, Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding-bottom: 32px;
+    line-height: 1.2;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.articles_list span {
+    text-align: left;
+    font-family: Open Sans, Roboto, sans-serif;
+    font-size: 1em;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
 .articles_list a {
     display: inline-block;
     text-decoration: none;
-    margin-top: 30px;
-    font-size: 18px;
+    margin-bottom: 30px;
+    font-size: 1.3em;
     font-family: Open Sans, Roboto, sans-serif;
     font-weight: bold;
     word-wrap: break-word;

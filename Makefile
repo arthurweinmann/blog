@@ -47,7 +47,8 @@ build-blog:
 build-web: $(BUILDDIR) check-generic-dep
 	rm -rf $(BUILDDIR)/web && \
 	cd $(CURDIR)/cmd/build && go mod tidy && go build && mv build $(BUILDDIR)/ && cd $(CURDIR) && \
-	$(BUILDDIR)/build && cp -r $(CURDIR)/web/css $(BUILDDIR)/web && cp -r $(CURDIR)/web/assets $(BUILDDIR)/web
+	$(BUILDDIR)/build && cp -r $(CURDIR)/web/css $(BUILDDIR)/web && cp -r $(CURDIR)/web/assets $(BUILDDIR)/web && \
+	cp $(CURDIR)/web/robots.txt $(BUILDDIR)/web
 
 PHONY:check-generic-dep
 check-generic-dep:

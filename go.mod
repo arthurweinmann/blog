@@ -28,7 +28,7 @@ require (
 	github.com/akamai/AkamaiOPEN-edgegrid-golang v1.2.1 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v1.61.1755 // indirect
 	github.com/andres-erbsen/clock v0.0.0-20160526145045-9e14626cd129 // indirect
-	github.com/arthurweinmann/go-https-hug v0.0.0-20230809225503-22ff42a10b56
+	github.com/arthurweinmann/go-https-hug v0.0.0-20230813202434-9e86525d3556
 	github.com/aws/aws-sdk-go v1.44.114 // indirect
 	github.com/boombuler/barcode v1.0.1-0.20190219062509-6c824513bacc // indirect
 	github.com/cenkalti/backoff/v4 v4.2.0 // indirect

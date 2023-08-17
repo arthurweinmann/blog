@@ -301,3 +301,7 @@ li {
 b {
     font-weight: bold;
 }
+
+a {
+    word-break: break-word;
+}

@@ -3,7 +3,7 @@
 Each year, highschool seniors spend a lot of time into their college applications: for their essays, standardized tests, filling out FAFSA information and planning for financial aid, filling college specific forms that on average require 40 information fields to be completed. 
 Furthermore, students have to take part in associations, clubs, even NGOs in order to make their application stand out. But let's not consider those efforts since they are difficult to measure.
 
-In the school year 2022-2023, 1 244 476 students applied for colleges, for a total of 7 057 980 applications (5.7 per student). On average, a student will spend between 60 and 200 hours working for their applications. Let's take 100 hours as our baseline. Let's consider that 97 hours are spend on work which is common to all applications (the essay is a big part of it but also the tests), and 3 hours spend specifically per college. Each year, colleges consume, only for their application process:
+In the school year 2022-2023, 1 244 476 students applied for colleges, for a total of 7 057 980 applications (5.7 per student). On average, a student will spend between 60 and 200 hours working for their applications. Let's take 100 hours as our baseline. Let's consider that 97 hours are spent on work which is common to all applications (the essay is a big part of it but also the tests), and 3 hours spent specifically per college. Each year, colleges consume, only for their application process:
 
 <b>1244476×97+7057980×3 = 141888112 hours = 5912004 days = (÷365.25) 16186 years of human work</b>.
 

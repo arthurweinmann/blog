@@ -297,3 +297,7 @@ li {
         display: inline-block;
     }
 }
+
+b {
+    font-weight: bold;
+}

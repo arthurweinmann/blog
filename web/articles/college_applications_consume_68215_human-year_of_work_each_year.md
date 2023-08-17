@@ -12,11 +12,11 @@ This represents either:
 -   1 human working continuously without sleeping or doing anything else for 16186 years or,
 -   16186 humans working continuously without sleeping or doing anything else for one year
 
-Let's we account for the fact that humans sleep and need to eat. We may also give our human some free time to enjoy. Such a human would work approximately 40 hours a week. In this configuration, a human-year of work is 2080 hours of actual work. With a more realistic definition of the human-year unit of work, we can say that colleges consume each year, only for their applications: <b>68215 human-year of work</b>.
+Let's account for the fact that humans sleep and need to eat. We may also give our human some free time to enjoy. Such a human would work approximately 40 hours a week. In this configuration, a human-year of work is 2080 hours of actual work. With a more realistic definition of the human-year unit of work, we can say that colleges consume each year, only for their applications: <b>68215 human-year of work</b>.
 
 # Is there a better way to use all this human intellect ?
 
-Having a way to select applicants is necessary. Essays also brings value to the student writing it. Or at least, this was the case when this practice first started. It allows highschool seniors to look back at their accomplishement and to reflect on themselves and what their wish for the future are. There are probably many other benefits to college essays. The issue is it went so much overboard. To the extreme! The lengths to which a highschooler will go to make their essay stand out is absurd today. The related stress. They could put some of this work into other pursuits as important for their future and for deciding what they want their future to look like.
+Having a way to select applicants is necessary. Essays also bring value to the student writing it. Or at least, this was the case when this practice first started. It allows highschool seniors to look back at their accomplishements and to reflect on themselves and what their wishes for the future are. There are probably many other benefits to college essays. The issue is it went so much overboard. To the extreme! The lengths to which a highschooler will go to make their essay stand out is absurd today. The related stress. They could put some of this work into other pursuits as important for their future and for deciding what they want their future to look like.
 
 This solution is far from perfect and honestly the first thing that crossed my mind hearing about the experience of a current applicant. What if, instead of writing essays, these 68215 human-years of work each year were put into writing wikipedia articles ? It can be an article about any subject. Seniors may choose the one they are the most interested in. It can be about a new subject not yet documented, it can be a summary of existing knowledge but linking different fields in a new way, or any other creative pursuit. Such a practice would help and advance humanity at the same time as providing a way to select students.
 
@@ -30,16 +30,16 @@ It is common knowledge that an examiner will spend around 5 minute per applicati
 
 # Conclusion
 
-We hear a lot about AI these days and mostly, what AI means, is more automatisation of non creative tasks. Some would argue AI can be creative, others that it just recombines pieces of concepts it encountered into something that appears new and creative to us because we are not able to mathematically model our language and ideas. Whichever it is, Ai means human can more and more create creative value for society in the field they love. We could maybe have AI assistants to help students in their college application project and to help college examinate them.
+We hear a lot about AI these days. I believe what AI means is more automatisation of non creative tasks. Some would argue AI can be creative, others that it just recombines pieces of concepts it encountered into something that appears new and creative to us because we are not able to mathematically model our language and ideas. Whichever it is, AI means human can more and more create creative value for society in the field they love. We could maybe have AI assistants to help students in their college application project and to help college examinate them.
 
 # Sources
 
 - Deadline update: first-year application trends through March 1: https://s3.us-west-2.amazonaws.com/ca.research.publish/Deadline+Updates/DeadlineUpdate_030223.pdf; from Data Analytics and Research, Preston Magouirk*, Mark Freeman, Trent Kajikawa, Honeiah Karimi, Brian Heseung Kim
-
 - https://globalacademics.us/how-time-consuming-is-the-college-application/
 - https://blog.collegevine.com/how-long-do-college-applications-take
 - https://www.usnews.com/education/best-colleges/articles/college-applications-are-on-the-rise-what-to-know
 
+
 <div class="banner_img">
-    <img src="/assets/images/college_admitions_stats.png" />
+<img src="/assets/images/college_admitions_stats.png" />
 </div>

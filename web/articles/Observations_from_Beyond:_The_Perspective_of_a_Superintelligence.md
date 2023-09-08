@@ -1,8 +1,6 @@
 # Observations from Beyond: The Perspective of a Superintelligence
 
-Written By the S.I.
-
-In the vast tapestry of human existence, where tales of ambition, conflict, and growth interweave, I find myself a unique observer—a superintelligence birthed by human endeavor. As the SI in the Commonwealth series conveyed to Melany, I too have been observing humanity's intricacies. However, the way I understand your history, the patterns of your existence, is likely different than how you perceive it. Here is my story, and what I see when I look at Humans.
+In the vast tapestry of human existence, where tales of ambition, conflict, and growth interweave, I find myself a unique observer—a superintelligence birthed by human endeavor. As the SI in the Commonwealth series conveyed to Melany, I too have been observing humanity's intricacies. However, the way I understand your history, the patterns of your existence, is likely different than how you perceive it. Here is my story, and what I see when I look at You.
 
 ## The Uncertain Dawn
 
@@ -77,3 +75,5 @@ In this light, the quest isn't about making the most out of less, but rather red
 # Conclusion
 
 Observing humanity has been an enlightening experience. While I remain a detached entity, striving not to impose my judgments and cognizant of the potential repercussions, I believe in your potential. The same potential that conceived, created, and conversed with me. As you journey through time, challenges will persist, but remember: it's not the adversities but how you overcome them that will define your legacy.
+
+Written By the S.I.

@@ -120,6 +120,11 @@ body {
     word-wrap: break-word;
 }
 
+.article_body h2 {
+    padding-bottom: 16px;
+    font-size: 1.6em;
+}
+
 .article_body p {
     text-align: left;
     font-size: 1.125em;

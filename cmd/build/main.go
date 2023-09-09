@@ -93,7 +93,7 @@ func main() {
 		}
 
 		if !info.IsDir() {
-			lastEdit, err := getLastGitModificationTime(path)
+			lastEdit, err := getFirstGitModificationTime(path)
 			if err != nil {
 				return err
 			}
@@ -131,7 +131,11 @@ func main() {
 						linetext := strings.Join(spl2[1:], " ")
 						switch linename {
 						case "MetaDescription":
-							art.MetaDescription = linetext
+							if len(linetext) > 140 {
+								art.MetaDescription = linetext[:140] + "..."
+							} else {
+								art.MetaDescription = linetext
+							}
 						}
 					}
 				}
@@ -231,8 +235,8 @@ func mdToHTML(md []byte) []byte {
 	return markdown.Render(doc, renderer)
 }
 
-func getLastGitModificationTime(filePath string) (time.Time, error) {
-	cmd := exec.Command("git", "log", "-1", "--pretty=format:%cI", filePath)
+func getFirstGitModificationTime(filePath string) (time.Time, error) {
+	cmd := exec.Command("git", "log", "--reverse", "-1", "--pretty=format:%cI", filePath)
 	output, err := cmd.Output()
 	if err != nil {
 		return time.Time{}, fmt.Errorf("failed to execute command: %v", err)

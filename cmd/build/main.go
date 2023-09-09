@@ -122,7 +122,7 @@ func main() {
 			if len(spl) > 1 {
 				bstr = spl[1]
 
-				scanner := bufio.NewScanner(strings.NewReader(art.Content))
+				scanner := bufio.NewScanner(strings.NewReader(spl[0]))
 				for scanner.Scan() {
 					line := scanner.Text()
 					if strings.HasPrefix(line, "+++") {

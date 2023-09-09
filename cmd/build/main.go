@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -9,13 +10,10 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"regexp"
 	"sort"
 	"strings"
 	"text/template"
 	"time"
-
-	xhtml "golang.org/x/net/html"
 
 	"github.com/alecthomas/chroma"
 	"github.com/alecthomas/chroma/formatters/html"
@@ -118,14 +116,32 @@ func main() {
 				return err
 			}
 
-			art.Content = string(mdToHTML(b))
+			bstr := string(b)
 
-			withouttitle := regexp.MustCompile(`(?m)<h1>.*</h1>`).ReplaceAllString(art.Content, "")
-			if len(withouttitle) > 256 {
-				art.MetaDescription = extractPlainText(withouttitle[:256]) + "..."
-			} else {
-				art.MetaDescription = extractPlainText(withouttitle)
+			spl := strings.Split(bstr, "--END METAS--")
+			if len(spl) > 1 {
+				bstr = spl[1]
+
+				scanner := bufio.NewScanner(strings.NewReader(art.Content))
+				for scanner.Scan() {
+					line := scanner.Text()
+					if strings.HasPrefix(line, "+++") {
+						spl2 := strings.Split(line[3:], " ")
+						linename := spl2[0]
+						linetext := strings.Join(spl2[1:], " ")
+						switch linename {
+						case "MetaDescription":
+							art.MetaDescription = linetext
+						}
+					}
+				}
+
+				if err := scanner.Err(); err != nil && err != io.EOF {
+					panic(err)
+				}
 			}
+
+			art.Content = string(mdToHTML([]byte(bstr)))
 
 			f, err := os.Create(filepath.Join(wd, "build/web/articles/"+fname+".html"))
 			if err != nil {
@@ -272,20 +288,4 @@ func myRenderHook(w io.Writer, node ast.Node, entering bool) (ast.WalkStatus, bo
 		return ast.GoToNext, true
 	}
 	return ast.GoToNext, false
-}
-
-func extractPlainText(html string) string {
-	doc, _ := xhtml.Parse(strings.NewReader(html))
-	var plainTextBuilder strings.Builder
-	var traverse func(*xhtml.Node)
-	traverse = func(n *xhtml.Node) {
-		if n.Type == xhtml.TextNode {
-			plainTextBuilder.WriteString(n.Data)
-		}
-		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			traverse(c)
-		}
-	}
-	traverse(doc)
-	return plainTextBuilder.String()
 }

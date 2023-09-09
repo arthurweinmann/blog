@@ -1,3 +1,7 @@
++++MetaDescription Each year, College Applications consume 68215 human-years in the form of student essays. These are my thoughts about it, and a possible solution to make good use of those human-years of work.
+
+--END METAS--
+
 # College Applications consume 68215 human-years of work each year
 
 Each year, highschool seniors spend a lot of time into their college applications: for their essays, standardized tests, filling out FAFSA information and planning for financial aid, filling college specific forms that on average require 40 information fields to be completed. 

@@ -1,3 +1,7 @@
++++MetaDescription The human DNA, comprised of approximately 3.5 billion base pairs, equates to about 750 Megabytes of data. This constitutes all the information necessary to construct a human being. Moreover, it encapsulates the instructions on how to interpret this data. When I first compiled the Monaco Editor, the sum of all files amounted to around 1.4 Gigabytes - twice the size of the source code required for human construction!
+
+--END METAS--
+
 # More Complex Than DNA
 
 The human DNA, comprised of approximately 3.5 billion base pairs, equates to about 750 Megabytes of data. This constitutes all the information necessary to construct a human being. Moreover, it encapsulates the instructions on how to interpret this data.

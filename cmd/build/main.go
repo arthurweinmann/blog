@@ -14,6 +14,8 @@ import (
 	"text/template"
 	"time"
 
+	xhtml "golang.org/x/net/html"
+
 	"github.com/alecthomas/chroma"
 	"github.com/alecthomas/chroma/formatters/html"
 	"github.com/alecthomas/chroma/lexers"
@@ -118,9 +120,9 @@ func main() {
 			art.Content = string(mdToHTML(b))
 
 			if len(art.Content) > 140 {
-				art.MetaDescription = art.Content[:140] + "..."
+				art.MetaDescription = extractPlainText(art.Content[:140]) + "..."
 			} else {
-				art.MetaDescription = art.Content
+				art.MetaDescription = extractPlainText(art.Content)
 			}
 
 			f, err := os.Create(filepath.Join(wd, "build/web/articles/"+fname+".html"))
@@ -268,4 +270,20 @@ func myRenderHook(w io.Writer, node ast.Node, entering bool) (ast.WalkStatus, bo
 		return ast.GoToNext, true
 	}
 	return ast.GoToNext, false
+}
+
+func extractPlainText(html string) string {
+	doc, _ := xhtml.Parse(strings.NewReader(html))
+	var plainTextBuilder strings.Builder
+	var traverse func(*xhtml.Node)
+	traverse = func(n *xhtml.Node) {
+		if n.Type == xhtml.TextNode {
+			plainTextBuilder.WriteString(n.Data)
+		}
+		for c := n.FirstChild; c != nil; c = c.NextSibling {
+			traverse(c)
+		}
+	}
+	traverse(doc)
+	return plainTextBuilder.String()
 }

@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"text/template"
@@ -119,10 +120,11 @@ func main() {
 
 			art.Content = string(mdToHTML(b))
 
-			if len(art.Content) > 140 {
-				art.MetaDescription = extractPlainText(art.Content[:140]) + "..."
+			withouttitle := regexp.MustCompile(`(?m)<h1>.*</h1>`).ReplaceAllString(art.Content, "")
+			if len(withouttitle) > 256 {
+				art.MetaDescription = extractPlainText(withouttitle[:256]) + "..."
 			} else {
-				art.MetaDescription = extractPlainText(art.Content)
+				art.MetaDescription = extractPlainText(withouttitle)
 			}
 
 			f, err := os.Create(filepath.Join(wd, "build/web/articles/"+fname+".html"))

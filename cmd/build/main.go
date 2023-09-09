@@ -49,12 +49,13 @@ func init() {
 }
 
 type Article struct {
-	HighlightCSS   string    `json:"HighlightCSS"`
-	Title          string    `json:"Title"`
-	Link           string    `json:"Link"`
-	Content        string    `json:"Content"`
-	LastEdit       time.Time `json:"LastEdit"`
-	LastEditPretty string    `json:"LastEditPretty"`
+	HighlightCSS    string    `json:"HighlightCSS"`
+	Title           string    `json:"Title"`
+	Link            string    `json:"Link"`
+	Content         string    `json:"Content"`
+	LastEdit        time.Time `json:"LastEdit"`
+	LastEditPretty  string    `json:"LastEditPretty"`
+	MetaDescription string    `json:"MetaDescription"`
 }
 
 func main() {
@@ -115,6 +116,12 @@ func main() {
 			}
 
 			art.Content = string(mdToHTML(b))
+
+			if len(art.Content) > 140 {
+				art.MetaDescription = art.Content[:140] + "..."
+			} else {
+				art.MetaDescription = art.Content
+			}
 
 			f, err := os.Create(filepath.Join(wd, "build/web/articles/"+fname+".html"))
 			if err != nil {

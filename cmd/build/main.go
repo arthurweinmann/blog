@@ -236,7 +236,8 @@ func mdToHTML(md []byte) []byte {
 }
 
 func getFirstGitModificationTime(filePath string) (time.Time, error) {
-	cmd := exec.Command("git", "log", "--reverse", "-1", "--pretty=format:%cI", filePath)
+	// Using a pipeline of git log to retrieve all commits and then tail to get the last (oldest) commit.
+	cmd := exec.Command("sh", "-c", fmt.Sprintf("git log --pretty=format:%%cI %s | tail -n 1", filePath))
 	output, err := cmd.Output()
 	if err != nil {
 		return time.Time{}, fmt.Errorf("failed to execute command: %v", err)
